@@ -9,8 +9,8 @@ LABEL org.label-schema.description="Helper package to make loading/unloading hug
 RUN pip install matplotlib sklearn
 
 # Project installs
-WORKDIR /opt/pq
-COPY ./ /opt/pq/
+WORKDIR /opt/hq
+COPY ./ /opt/hq/
 RUN pip install .
 
 RUN chgrp -R 0 /opt/hq/ && \
