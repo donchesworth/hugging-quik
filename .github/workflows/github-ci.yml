@@ -45,12 +45,12 @@ jobs:
     steps:
       - name: Run container
         run: |
-          /opt/pq/entrypoint.sh
+          /opt/hq/entrypoint.sh
       - name: Upload coverage
         uses: actions/upload-artifact@v2
         with:
           name: coverage-reports
-          path: /opt/pq/coverage*
+          path: /opt/hq/coverage*
   coverage_upload:
     runs-on: ubuntu-latest
     needs: container_run
