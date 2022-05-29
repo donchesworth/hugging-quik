@@ -1,0 +1,5 @@
+[run]
+source = hugging_quik
+omit =
+    *tests*
+    handler/*

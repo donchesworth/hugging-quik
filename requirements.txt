@@ -1,0 +1,9 @@
+torch>=1.7.0
+pandas>=1.1
+transformers
+sentencepiece
+pytest
+pytest-cov
+codecov
+numpy>=1.21.0
+bump2version
