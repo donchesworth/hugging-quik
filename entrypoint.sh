@@ -1,6 +1,6 @@
 #!/bin/sh
 
-cd /opt/pq
+cd /opt/hq
 source ./.env
 # pytest
 pytest --cov=/opt/hq/hugging_quik --cov-config=.coveragerc
