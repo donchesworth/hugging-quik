@@ -75,6 +75,7 @@ def update_tokenizer_path(serve_path):
     newtokenizer = "./tokenizer.json"
     with open(configpath) as f:
         tconfig = json.load(f)
+    logger.info(tconfig)
     srcpath = Path(tconfig["tokenizer_file"])
     dstpath = serve_path.joinpath(newtokenizer)
     shutil.copyfile(srcpath, dstpath)

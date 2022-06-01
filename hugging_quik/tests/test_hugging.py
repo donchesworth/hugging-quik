@@ -1,7 +1,9 @@
+import re
 from hugging_quik.model import (
     HUGGING_MODELS,
     get_pretrained_model,
     model_info,
+    save_pretrained_model,
 )
 from hugging_quik.token import (
     get_encodings,
@@ -13,7 +15,7 @@ from transformers import BatchEncoding, logging as tlog
 src_tgt = {'source': 'es', 'target': 'en'}
 
 
-def test_get_bert_info(sample_labels):
+def test_model_info(sample_labels):
     for model_type in HUGGING_MODELS.keys():
         serve_config = model_info(model_type, kwargs=src_tgt)
         assert isinstance(serve_config, dict)
@@ -38,8 +40,13 @@ def test_get_encodings(sample_data):
         assert isinstance(encode_list[0], BatchEncoding)
 
 
-def test_get_bert_model(sample_labels):
+def test_get_and_save_model(sample_labels):
     tlog.set_verbosity_error()
     for model_type, values in HUGGING_MODELS.items():
-        model = get_pretrained_model(labels=sample_labels, bert_type=model_type)
-        assert isinstance(model, values["model"])
+        model = get_pretrained_model(
+            labels=sample_labels,
+            model_type=model_type,
+            kwargs=src_tgt,
+        )
+        assert isinstance(model, values["model-head"])
+        save_pretrained_model(model)
